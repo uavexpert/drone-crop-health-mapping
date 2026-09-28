@@ -7,15 +7,27 @@ Mapping crop health with an affordable consumer drone (DJI Mini 3): RGB-based ve
 Before flying over real crops, I validated the full workflow on a practice field:
 
 - **Flight:** DJI Mini 3, automated grid mission with Litchi Pilot (45 m AGL, 75% front / 70% side overlap, nadir camera, locked manual exposure)
+
 - **Processing:** WebODM (fast orthophoto) — 35 images stitched into one orthomosaic
+
 - **Analysis:** QGIS Raster Calculator — VARI vegetation index map
+
 - **Result:** complete orthomosaic with no gaps; VARI map uniform, as expected on bare soil
+
+## Python VARI mapping (Sep 2026)
+
+Rebuilt the VARI computation from scratch in pure Python (Pillow) to understand exactly how every number is produced:
+
+- **Script:** `python/vari_map.py` — computes VARI per pixel with the formula `(Green − Red) / (Green + Red − Blue)` (Gitelson et al. 2002) and renders grayscale + red-yellow-green vigor maps
+- **Input:** 48 MP drone photo (`photo.jpg`, excluded from the repo), processed at 1920×1080 working resolution
+- **Result:** VARI range −0.17 to 0.52 on the practice field — the map revealed a vegetated field-margin strip that is easy to miss in the RGB photo
 
 ## 01 — Winter wheat (upcoming)
 
 Two repeat flights over the same winter wheat parcel:
 
 1. Autumn 2026 — tillering (BBCH 20–29)
+
 2. Spring 2027 — stem elongation to heading (BBCH 30–59)
 
 Planned outputs: orthomosaic, VARI/ExG vigor maps, and a change map between the two dates.
