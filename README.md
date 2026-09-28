@@ -18,7 +18,7 @@ Before flying over real crops, I validated the full workflow on a practice field
 
 Rebuilt the VARI computation from scratch in pure Python (Pillow) to understand exactly how every number is produced:
 
-- **Script:** `python/vari_map.py` — computes VARI per pixel with the formula `(Green − Red) / (Green + Red − Blue)` (Gitelson et al. 2002) and renders grayscale + red-yellow-green vigor maps
+- **Script:** `python/vari_map.py` — computes VARI per pixel with the formula `(Green − Red) / (Green + Red − Blue)` (Gitelson et al. 2002) and renders a grayscale vigor map
 - **Input:** one full-resolution 48 MP drone photo (`photo.jpg`, excluded from the repo) — processed at native resolution, no resizing; a single-photo check before the wheat flights
 - **Result:** VARI range −18.0 to 8.0 over ~48 million pixels (extremes are rare outlier pixels where Green+Red−Blue ≈ 0); the map shows the bare-soil practice field with a bright strip along the field margin, likely vegetation — to be confirmed against the RGB photo
 
