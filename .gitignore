@@ -1,0 +1,4 @@
+# source drone photos are too big for the repo
+photo.jpg
+*.jpg
+__pycache__/
